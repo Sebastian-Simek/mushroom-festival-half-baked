@@ -28,7 +28,7 @@ const friendData = [
         satisfaction: 2,
     },
 ];
-console.log(friendData);
+
 addMushroomButton.addEventListener('click', () => {
     if (Math.random() > 0.5) {
         alert('found a mushroom!');
@@ -46,15 +46,13 @@ addFriendButton.addEventListener('click', () => {
         satisfaction: Math.ceil(Math.random() * 3)
     };
     friendData.push(newFriend);
-    friendInputEl.value = '';
+    friendInputEl.textContent = '';
     displayFriends();
-    // reset the input
-    // display all the friends (use a function here)
 });
 
 function displayFriends() {
     // clear out the friends in DOM
-    friendData.value = '';
+    friendsEl.textContent = '';
     // for each friend in state . . .
     for (let friend of friendData) {
         const friendOutput = renderFriend(friend);
@@ -70,10 +68,12 @@ function displayFriends() {
 }
 
 function displayMushrooms() {
-    // clear out the mushroom div
+    mushroomsEl.textContent = '';
 
     for (let i = 0; i < mushroomCount; i++) {
         // for each mushroom in your mushroom state, render and append a mushroom
+        const mushroomOutput = renderMushroom(i);
+        mushroomsEl.append(mushroomOutput);
     }
 }
 
