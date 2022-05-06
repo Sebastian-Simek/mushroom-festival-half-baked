@@ -40,14 +40,23 @@ addMushroomButton.addEventListener('click', () => {
 });
 
 addFriendButton.addEventListener('click', () => {
-    let newFriend = {
-        name: friendInputEl.value,
-        satisfaction: Math.ceil(Math.random() * 3)
-    };
-    friendData.push(newFriend);
-    friendInputEl.textContent = '';
-    displayFriends();
-});
+    if (friendInputEl.value === ''){
+        let newFriend = {
+            name: `Random name #${Math.floor(Math.random() * 1000)}`,
+            satisfaction: 1
+        };
+        friendData.push(newFriend);
+        friendInputEl.textContent = '';
+        displayFriends();
+    } else {
+        let newFriend = {
+            name: friendInputEl.value,
+            satisfaction: 1
+        };
+        friendData.push(newFriend);
+        friendInputEl.textContent = '';
+        displayFriends();
+    }});
 
 function displayFriends() {
     friendsEl.textContent = '';
